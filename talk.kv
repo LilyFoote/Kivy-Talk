@@ -41,9 +41,5 @@ ScreenManager:
                 CodeInput:
                     text: "box = BoxLayout()\nlabel = Label(text='A label')\nbutton = Button(text='Press me!')\nbox.add_widget(label)\nbox.add_widget(button)"
 
-<Slide@Screen>:
-    on_touch_up:
-        self.manager.current = self.manager.next()
-
 <KivyCode@CodeInput>:
     lexer: KivyLexer()
