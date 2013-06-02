@@ -6,12 +6,14 @@ ScreenManager:
         name: 'Kivy'
         Label:
             text: 'Kivy'
+            font_size: '32pt'
     Slide:
         name: 'Intro'
         BoxLayout:
             orientation: 'vertical'
             Label:
                 text: 'What is Kivy?'
+                font_size: '28pt'
             Label:
                 text: 'Kivy is a Python library for creating touchscreen Apps.'
             Label:
@@ -20,13 +22,24 @@ ScreenManager:
         name: 'Kv'
         BoxLayout:
             orientation: 'vertical'
+            padding: 20
+            spacing: 20
             Label:
                 text: 'The kv language'
+                font_size: '28pt'
             Label:
                 text: 'Kivy includes a design language analogous to html/css to simplify creating GUIs.'
             KivyCode:
-                size_hint_y: 4
+                size_hint_y: 2
                 text: "Label:\n    text: 'Hello World!'"
+            BoxLayout:
+                size_hint_y: 2
+                spacing: 10
+                orientation: 'horizontal'
+                KivyCode:
+                    text: "BoxLayout:\n    Label:\n        text: 'A label'\n    Button:\n        text: 'Press me!'"
+                CodeInput:
+                    text: "box = BoxLayout()\nlabel = Label(text='A label')\nbutton = Button(text='Press me!')\nbox.add_widget(label)\nbox.add_widget(button)"
 
 <Slide@Screen>:
     on_touch_up:
