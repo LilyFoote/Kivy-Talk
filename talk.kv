@@ -1,4 +1,5 @@
 #:kivy 1.7.1
+#:import KivyLexer kivy.extras.highlight.KivyLexer
 
 ScreenManager:
     Slide:
@@ -15,7 +16,21 @@ ScreenManager:
                 text: 'Kivy is a Python library for creating touchscreen Apps.'
             Label:
                 text: 'It is cross-platform, supporting Linux, Mac, Windows, Android and IOS.'
+    Slide:
+        name: 'Kv'
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'The kv language'
+            Label:
+                text: 'Kivy includes a design language analogous to html/css to simplify creating GUIs.'
+            KivyCode:
+                size_hint_y: 4
+                text: "Label:\n    text: 'Hello World!'"
 
 <Slide@Screen>:
     on_touch_up:
         self.manager.current = self.manager.next()
+
+<KivyCode@CodeInput>:
+    lexer: KivyLexer()
