@@ -19,6 +19,7 @@ ScreenManager:
             Label:
                 text: 'It is cross-platform, supporting Linux, Mac, Windows, Android and IOS.'
     Slide:
+        id: kv
         name: 'Kv'
         BoxLayout:
             orientation: 'vertical'
@@ -32,14 +33,17 @@ ScreenManager:
             KivyCode:
                 size_hint_y: 2
                 text: "Label:\n    text: 'Hello World!'"
+                on_focus: kv._keyboard_closed() if args[1] else kv.get_keyboard()
             BoxLayout:
                 size_hint_y: 2
                 spacing: 10
                 orientation: 'horizontal'
                 KivyCode:
                     text: "BoxLayout:\n    Label:\n        text: 'A label'\n    Button:\n        text: 'Press me!'"
+                    on_focus: kv._keyboard_closed() if args[1] else kv.get_keyboard()
                 CodeInput:
                     text: "box = BoxLayout()\nlabel = Label(text='A label')\nbutton = Button(text='Press me!')\nbox.add_widget(label)\nbox.add_widget(button)"
+                    on_focus: kv._keyboard_closed() if args[1] else kv.get_keyboard()
 
 <KivyCode@CodeInput>:
     lexer: KivyLexer()
