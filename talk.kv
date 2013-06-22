@@ -1,12 +1,15 @@
 #:kivy 1.7.1
 #:import KivyLexer kivy.extras.highlight.KivyLexer
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
 
 ScreenManager:
+    transition: SlideTransition(direction='left')
     Slide:
         name: 'Kivy'
         Label:
             text: 'Kivy'
             font_size: '32pt'
+
     Slide:
         name: 'Intro'
         BoxLayout:
@@ -18,6 +21,7 @@ ScreenManager:
                 text: 'Kivy is a Python library for creating touchscreen Apps.'
             Label:
                 text: 'It is cross-platform, supporting Linux, Mac, Windows, Android and IOS.'
+
     Slide:
         id: kv
         name: 'Kv'

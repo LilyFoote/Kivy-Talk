@@ -22,8 +22,10 @@ class Slide(Screen):
 
     def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
         if keycode[1] == 'n':
+            self.manager.transition.direction = 'left'
             self.manager.current = self.manager.next()
         elif keycode[1] == 'b':
+            self.manager.transition.direction = 'right'
             self.manager.current = self.manager.previous()
         else:
             return False
