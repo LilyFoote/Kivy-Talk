@@ -1,12 +1,12 @@
 #:kivy 1.7.1
 #:import KivyLexer kivy.extras.highlight.KivyLexer
-#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
 
 <KivyCode@CodeInput>:
     lexer: KivyLexer()
 
 ScreenManager:
-    transition: SlideTransition(direction='left')
+    transition: FadeTransition()
     Slide:
         name: 'Kivy'
         Label:
