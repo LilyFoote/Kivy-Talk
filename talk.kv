@@ -1,7 +1,12 @@
 #:kivy 1.7.1
 #:import KivyLexer kivy.extras.highlight.KivyLexer
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+<KivyCode@CodeInput>:
+    lexer: KivyLexer()
 
 ScreenManager:
+    transition: FadeTransition()
     Slide:
         name: 'Kivy'
         Label:
@@ -18,8 +23,11 @@ ScreenManager:
                 text: 'Kivy is a Python library for creating touchscreen Apps.'
             Label:
                 text: 'It is cross-platform, supporting Linux, Mac, Windows, Android and IOS.'
+            Label:
+                text: 'Kivy uses OpenGL and Cython to allow it to be fast on all platforms.'
+
     Slide:
-        id: kv
+        id: kv_1
         name: 'Kv'
         BoxLayout:
             orientation: 'vertical'
@@ -28,22 +36,87 @@ ScreenManager:
             Label:
                 text: 'The kv language'
                 font_size: '28pt'
+
             Label:
                 text: 'Kivy includes a design language analogous to html/css to simplify creating GUIs.'
-            KivyCode:
-                size_hint_y: 2
-                text: "Label:\n    text: 'Hello World!'"
-                on_focus: kv._keyboard_closed() if args[1] else kv.get_keyboard()
+
             BoxLayout:
                 size_hint_y: 2
-                spacing: 10
                 orientation: 'horizontal'
                 KivyCode:
-                    text: "BoxLayout:\n    Label:\n        text: 'A label'\n    Button:\n        text: 'Press me!'"
-                    on_focus: kv._keyboard_closed() if args[1] else kv.get_keyboard()
-                CodeInput:
-                    text: "box = BoxLayout()\nlabel = Label(text='A label')\nbutton = Button(text='Press me!')\nbox.add_widget(label)\nbox.add_widget(button)"
-                    on_focus: kv._keyboard_closed() if args[1] else kv.get_keyboard()
+                    id: kv_example_1
+                    text: "Label:\n    text: 'Hello World!'"
+                    on_focus: kv_1._keyboard_closed() if args[1] else kv_1.get_keyboard()
 
-<KivyCode@CodeInput>:
-    lexer: KivyLexer()
+                Image:
+                    source: 'data/res/arrow_right.png'
+
+                Container:
+                    kv: kv_example_1.text
+
+    Slide:
+        id: kv_2
+        name: 'Kv 2'
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 20
+            spacing: 20
+
+            Label:
+                text: 'The kv language'
+                font_size: '28pt'
+
+            Label:
+                text: 'A widget hierarchy can be constructed in both kv and python:'
+
+            BoxLayout:
+                size_hint_y: 4
+                BoxLayout:
+                    spacing: 10
+                    orientation: 'vertical'
+                    KivyCode:
+                        id: kv_example_2
+                        text: "BoxLayout:\n    Label:\n        text: 'A label'\n    Button:\n        text: 'Press me!'"
+                        on_focus: kv_2._keyboard_closed() if args[1] else kv_2.get_keyboard()
+                    CodeInput:
+                        text: "box = BoxLayout()\nlabel = Label(text='A label')\nbutton = Button(text='Press me!')\nbox.add_widget(label)\nbox.add_widget(button)"
+                        on_focus: kv_2._keyboard_closed() if args[1] else kv_2.get_keyboard()
+
+                Image:
+                    source: 'data/res/arrow_right.png'
+
+                Container:
+                    kv: kv_example_2.text
+
+    Slide:
+        id: kv_3
+        name: 'Kv 3'
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 20
+            spacing: 20
+
+            Label:
+                text: 'The kv language'
+                font_size: '28pt'
+
+            Label:
+                text: 'Widgets have a canvas property, which can be used to change the look of the widget:'
+
+            BoxLayout:
+                size_hint_y: 4
+                BoxLayout:
+                    spacing: 10
+                    orientation: 'vertical'
+                    KivyCode:
+                        id: kv_example_3
+                        text: "BoxLayout:\n    Label:\n        text: 'A label'\n    Button:\n        text: 'Press me!'"
+                        on_focus:
+                            kv_3._keyboard_closed() if args[1] else kv_3.get_keyboard()
+
+                Image:
+                    source: 'data/res/arrow_right.png'
+
+                Container:
+                    kv: kv_example_3.text
+
