@@ -24,6 +24,12 @@ class Slide(Screen):
             self._keyboard.unbind(on_key_down=self._on_keyboard_down)
             self._keyboard = None
 
+    def toggle_keyboard(self, value):
+        if value:
+            self._keyboard_closed()
+        else:
+            self.get_keyboard()
+
     def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
         if keycode[1] == 'n':
             self.manager.transition.direction = 'left'

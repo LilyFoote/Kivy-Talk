@@ -47,7 +47,7 @@ ScreenManager:
                 KivyCode:
                     id: kv_example_1
                     text: "Label:\n    text: 'Hello World!'"
-                    on_focus: kv_1._keyboard_closed() if args[1] else kv_1.get_keyboard()
+                    on_focus: kv_1.toggle_keyboard(args[1])
 
                 Image:
                     source: 'data/res/arrow_right.png'
@@ -78,10 +78,10 @@ ScreenManager:
                     KivyCode:
                         id: kv_example_2
                         text: "BoxLayout:\n    Label:\n        text: 'A label'\n    Button:\n        text: 'Press me!'"
-                        on_focus: kv_2._keyboard_closed() if args[1] else kv_2.get_keyboard()
+                        on_focus: kv_2.toggle_keyboard(args[1])
                     CodeInput:
                         text: "box = BoxLayout()\nlabel = Label(text='A label')\nbutton = Button(text='Press me!')\nbox.add_widget(label)\nbox.add_widget(button)"
-                        on_focus: kv_2._keyboard_closed() if args[1] else kv_2.get_keyboard()
+                        on_focus: kv_2.toggle_keyboard(args[1])
 
                 Image:
                     source: 'data/res/arrow_right.png'
@@ -112,12 +112,47 @@ ScreenManager:
                     KivyCode:
                         id: kv_example_3
                         text: "BoxLayout:\n    Label:\n        text: 'A label'\n    Button:\n        text: 'Press me!'"
-                        on_focus:
-                            kv_3._keyboard_closed() if args[1] else kv_3.get_keyboard()
+                        on_focus: kv_3.toggle_keyboard(args[1])
 
                 Image:
                     source: 'data/res/arrow_right.png'
 
                 Container:
                     kv: kv_example_3.text
+
+    Slide:
+        id: prop_1
+        name: 'Properties 1'
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 20
+            spacing: 20
+
+            Label:
+                text: 'Properties'
+                font_size: '28pt'
+
+            Label:
+                text: "Kivy properties provide a convenient way to manage widget attributes:"
+
+            BoxLayout:
+                CodeInput:
+                    text: "class Label(Widget):\n    text = StringProperty('')"
+                    on_focus: prop_1.toggle_keyboard(args[1])
+
+                KivyCode:
+                    text: "Label:\n    text: 'This is a StringProperty'"
+                    on_focus: prop_1.toggle_keyboard(args[1])
+
+            Label:
+                text: "Properties provide useful validation for values:"
+
+            CodeInput:
+                text: ">>> Label(text=14)\n Traceback (most recent call last):\n  ...\n ValueError: Label.text accept only str/unicode"
+                on_focus: prop_1.toggle_keyboard(args[1])
+
+    Slide:
+        id: prop_2
+        name: 'Properties 2'
 
