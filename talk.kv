@@ -1,17 +1,18 @@
 #:kivy 1.7.1
 #:import KivyLexer kivy.extras.highlight.KivyLexer
-#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
 
 <KivyCode@CodeInput>:
     lexer: KivyLexer()
 
 ScreenManager:
-    transition: FadeTransition()
+    transition: SlideTransition(direction='left')
     Slide:
         name: 'Kivy'
         Label:
             text: 'Kivy'
             font_size: '32pt'
+
     Slide:
         name: 'Intro'
         BoxLayout:
