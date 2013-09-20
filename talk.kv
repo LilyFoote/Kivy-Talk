@@ -4,6 +4,21 @@
 
 <KivyCode@CodeInput>:
     lexer: KivyLexer()
+    font_size: '30pt'
+
+<CodeInput>:
+    font_size: '25pt'
+
+<TitleLabel@Label>:
+    font_size: '50pt'
+
+<SlideLabel@Label>:
+    font_size: '40pt'
+    text_size: self.size
+    valign: 'middle'
+    halign: 'center'
+    size_hint_x: 0.8
+    pos_hint: {'center_x': 0.5}
 
 ScreenManager:
     transition: FadeTransition()
@@ -11,20 +26,19 @@ ScreenManager:
         name: 'Kivy'
         Label:
             text: 'Kivy'
-            font_size: '32pt'
+            font_size: '80pt'
 
     Slide:
         name: 'Intro'
         BoxLayout:
             orientation: 'vertical'
-            Label:
+            TitleLabel:
                 text: 'What is Kivy?'
-                font_size: '28pt'
-            Label:
+            SlideLabel:
                 text: 'Kivy is a Python library for creating touchscreen Apps.'
-            Label:
-                text: 'It is cross-platform, supporting Linux, Mac, Windows, Android and IOS.'
-            Label:
+            SlideLabel:
+                text: 'It is cross-platform, supporting Linux, Mac, Windows, Android, IOS and Raspberry Pi.'
+            SlideLabel:
                 text: 'Kivy uses OpenGL and Cython to allow it to be fast on all platforms.'
 
     Slide:
@@ -34,23 +48,22 @@ ScreenManager:
             orientation: 'vertical'
             padding: 20
             spacing: 20
-            Label:
+            TitleLabel:
                 text: 'The kv language'
-                font_size: '28pt'
+                size_hint_y: 0.5
 
-            Label:
-                text: 'Kivy includes a design language analogous to html/css to simplify creating GUIs.'
+            SlideLabel:
+                text: 'Kivy includes a design language analogous to html/css which abstracts away much of the complexity of layout and styling of a GUI.'
+                size_hint_y: 1.5
+                size_hint_x: 0.9
 
             BoxLayout:
                 size_hint_y: 2
                 orientation: 'horizontal'
                 KivyCode:
                     id: kv_example_1
-                    text: "Label:\n    text: 'Hello World!'"
+                    text: "Label:\n    text: 'Hello World!'\n    font_size: '60pt'"
                     on_focus: kv_1.toggle_keyboard(args[1])
-
-                Image:
-                    source: 'data/res/arrow_right.png'
 
                 Container:
                     kv: kv_example_1.text
@@ -63,28 +76,24 @@ ScreenManager:
             padding: 20
             spacing: 20
 
-            Label:
+            TitleLabel:
                 text: 'The kv language'
-                font_size: '28pt'
 
-            Label:
+            SlideLabel:
                 text: 'A widget hierarchy can be constructed in both kv and python:'
 
             BoxLayout:
-                size_hint_y: 4
-                BoxLayout:
-                    spacing: 10
-                    orientation: 'vertical'
-                    KivyCode:
-                        id: kv_example_2
-                        text: "BoxLayout:\n    Label:\n        text: 'A label'\n    Button:\n        text: 'Press me!'"
-                        on_focus: kv_2.toggle_keyboard(args[1])
-                    CodeInput:
-                        text: "box = BoxLayout()\nlabel = Label(text='A label')\nbutton = Button(text='Press me!')\nbox.add_widget(label)\nbox.add_widget(button)"
-                        on_focus: kv_2.toggle_keyboard(args[1])
-
-                Image:
-                    source: 'data/res/arrow_right.png'
+                size_hint_y: 3
+                spacing: 10
+                KivyCode:
+                    id: kv_example_2
+                    size_hint_x: 0.9
+                    text: "BoxLayout:\n    orientation: 'vertical'\n    Label:\n        text: 'A label'\n        font_size: '60pt'\n    Button:\n        text: 'Press me!'\n        font_size: '60pt'"
+                    on_focus: kv_2.toggle_keyboard(args[1])
+                CodeInput:
+                    size_hint_x: 1.2
+                    text: "box = BoxLayout(\n        orientation='vertical')\nlabel = Label(text='A label',\n        font_size='60pt')\nbutton = Button(text='Press me!',\n        font_size='60pt')\nbox.add_widget(label)\nbox.add_widget(button)"
+                    on_focus: kv_2.toggle_keyboard(args[1])
 
                 Container:
                     kv: kv_example_2.text
@@ -97,62 +106,20 @@ ScreenManager:
             padding: 20
             spacing: 20
 
-            Label:
+            TitleLabel:
                 text: 'The kv language'
-                font_size: '28pt'
 
-            Label:
+            SlideLabel:
                 text: 'Widgets have a canvas property, which can be used to change the look of the widget:'
 
             BoxLayout:
-                size_hint_y: 4
-                BoxLayout:
-                    spacing: 10
-                    orientation: 'vertical'
-                    KivyCode:
-                        id: kv_example_3
-                        text: "BoxLayout:\n    Label:\n        text: 'A label'\n    Button:\n        text: 'Press me!'"
-                        on_focus: kv_3.toggle_keyboard(args[1])
-
-                Image:
-                    source: 'data/res/arrow_right.png'
+                size_hint_y: 3
+                KivyCode:
+                    id: kv_example_3
+                    size_hint_x: 0.6
+                    text: "Label:\n\ttext: 'A label'\n\tfont_size: '60pt'\n\t#canvas:\n\t\t#Color:\n\t\t\t#rgb: 1, 0, 0\n\t\t#Rectangle:\n\t\t\t#pos: self.pos\n\t\t\t#size: self.size"
+                    on_focus: kv_3.toggle_keyboard(args[1])
 
                 Container:
                     kv: kv_example_3.text
-
-    Slide:
-        id: prop_1
-        name: 'Properties 1'
-
-        BoxLayout:
-            orientation: 'vertical'
-            padding: 20
-            spacing: 20
-
-            Label:
-                text: 'Properties'
-                font_size: '28pt'
-
-            Label:
-                text: "Kivy properties provide a convenient way to manage widget attributes:"
-
-            BoxLayout:
-                CodeInput:
-                    text: "class Label(Widget):\n    text = StringProperty('')"
-                    on_focus: prop_1.toggle_keyboard(args[1])
-
-                KivyCode:
-                    text: "Label:\n    text: 'This is a StringProperty'"
-                    on_focus: prop_1.toggle_keyboard(args[1])
-
-            Label:
-                text: "Properties provide useful validation for values:"
-
-            CodeInput:
-                text: ">>> Label(text=14)\n Traceback (most recent call last):\n  ...\n ValueError: Label.text accept only str/unicode"
-                on_focus: prop_1.toggle_keyboard(args[1])
-
-    Slide:
-        id: prop_2
-        name: 'Properties 2'
 
