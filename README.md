@@ -1,10 +1,5 @@
-Our talk about kivy.
+A short introductory talk about Kivy, written as a Kivy App. This was presented as a lightning talk at Pycon UK 2013.
 
-Perhaps we should use this space to outline what we want to talk about?
+To navigate through the slides, use the `n` key to show the next slide and the `b` key to show the previous slide.
 
-
-1: Architecture - Platform Support, PyGame, OpenGL, App class
-2: Language - Explain comparison to HTML,CSS & Javascript, basic example.
-3: Run a basic demo, Pong perhaps?
-4: Walk through pong source & kv side by side, show relationships. Change something, run Pong again.
-5: More complex example, using custom widgets - WeatherWidget and RegionMap probably.
+The CodeInput widgets are editable, and your changes will be rendered.
