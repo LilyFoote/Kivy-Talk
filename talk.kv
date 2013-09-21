@@ -62,7 +62,7 @@ ScreenManager:
                 orientation: 'horizontal'
                 KivyCode:
                     id: kv_example_1
-                    text: "Label:\n    text: 'Hello World!'\n    font_size: '60pt'"
+                    text: "Label:\n\ttext: 'Hello World!'\n\tfont_size: '60pt'"
                     on_focus: kv_1.toggle_keyboard(args[1])
 
                 Container:
@@ -88,11 +88,12 @@ ScreenManager:
                 KivyCode:
                     id: kv_example_2
                     size_hint_x: 0.9
-                    text: "BoxLayout:\n    orientation: 'vertical'\n    Label:\n        text: 'A label'\n        font_size: '60pt'\n    Button:\n        text: 'Press me!'\n        font_size: '60pt'"
+                    text: "BoxLayout:\n\torientation: 'vertical'\n\tLabel:\n\t\ttext: 'A label'\n\t\tfont_size: '60pt'\n\tButton:\n\t\ttext: 'Press me!'\n\t\tfont_size: '60pt'"
                     on_focus: kv_2.toggle_keyboard(args[1])
                 CodeInput:
                     size_hint_x: 1.2
-                    text: "box = BoxLayout(\n        orientation='vertical')\nlabel = Label(text='A label',\n        font_size='60pt')\nbutton = Button(text='Press me!',\n        font_size='60pt')\nbox.add_widget(label)\nbox.add_widget(button)"
+                    font_size: '23pt'
+                    text: "box = BoxLayout(\n\t\torientation='vertical')\nlabel = Label(\n\t\ttext='A label',\n\t\tfont_size='60pt')\nbutton = Button(\n\t\ttext='Press me!',\n\t\tfont_size='60pt')\nbox.add_widget(label)\nbox.add_widget(button)"
                     on_focus: kv_2.toggle_keyboard(args[1])
 
                 Container:
